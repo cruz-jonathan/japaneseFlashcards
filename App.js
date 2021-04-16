@@ -1,21 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+//Screens
+import HomePage from './src/screens/Homepage.js';
+import KatakanaScreen from './src/screens/KatakanaScreen.js';
+import HiraganaScreen from './src/screens/HiraganaScreen.js';
+import FlashcardScreen from './src/screens/FlashcardScreen.js';
+import KatakanaFlashScreen from './src/screens/KatakanaFlashScreen.js';
+import HiraganaFlashScreen from './src/screens/HiraganaFlashScreen.js';
+import VerbFlashScreen from './src/screens/VerbFlashScreen.js';
+
+const navigator = createStackNavigator({
+  Home: HomePage,
+  HiraganaAlphabet: HiraganaScreen,
+  KatakanaAlphabet: KatakanaScreen,
+  FlashCards: FlashcardScreen,
+  KatakanaFlash: KatakanaFlashScreen,
+  HiraganaFlash: HiraganaFlashScreen,
+  VerbFlash: VerbFlashScreen
+
+}, {
+  initialRouteName: 'Home',
+  defaultNavigationOptions:{
+    title: "Japanese"
+  }
 });
+
+export default createAppContainer(navigator);
